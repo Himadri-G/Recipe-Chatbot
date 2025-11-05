@@ -5,13 +5,14 @@ from langchain_core.output_parsers import StrOutputParser
 import streamlit as st
 
 #  Page Configuration
-st.set_page_config(page_title="Recipe Chatbot", layout="wide")
-st.title("Welcome to Recipebot 😊!")
+st.set_page_config(page_title="Recipe Chatbot2.0", layout="wide")
+st.title("Welcome to Recipebot2.0 😊!")
+st.subheader("Created by Himadri")
 
 # Initialize the model
 llm = ChatOllama(
-    model="llama2",  # Fixed model name
-    temperature=0.7 
+    model="llama3.2",  
+    temperature=0.3 
 )
 
 # Create Prompt Template and create Chain
@@ -79,6 +80,38 @@ if user_input:
         with st.spinner("Creating recipe..."):
             response = chain.invoke({"ingredients": user_input})
             st.write(response)
+
             
         # Save assistant's response - Fixed variable name
         st.session_state.messages.append({"role": "assistant", "content": response})
+
+ # Add sidebar
+with st.sidebar:
+    st.title("Sidebar")
+    temperature = st.slider("Temperature", 0.0, 1.0, 0.7)
+    st.write("Your API Key here")
+    user_input = st.chat_input("Enter your API key")
+
+# Add select model in dropdown button
+    selected_model = st.selectbox(
+    "Choose your AI Assistant",
+    [
+        'llama2',
+        'llama3.2',
+        'mistral',
+        'codellama',
+        'dolphin-phi',
+        'neural-chat',
+        'openchat',
+        'phi',
+        'stablelm2',
+        'vicuna',
+        'wizard-math',
+        'zephyr'
+    ],
+    index=0
+)
+
+# add clear-chat button
+    if st.button("Clear Chat History"):
+        st.session_state.messages = []
