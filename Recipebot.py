@@ -1,3 +1,5 @@
+#This is a recipe chatbot presented through a Streamlit interface, designed for clear, efficient culinary assistance.
+
 #Import required libraries
 from langchain_ollama import ChatOllama
 from langchain_core.prompts import PromptTemplate
