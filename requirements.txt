@@ -1,0 +1,17 @@
+# Core LLM + chain framework
+langchain>=1.0.0
+
+# OpenAI LLM integration
+openai>=0.27.8
+
+# Environment variables loader
+python-dotenv>=1.0.0
+
+# (Optional but recommended) For nicer CLI or UI
+streamlit>=1.20.0
+
+# (Optional) If you later parse structured output
+pydantic>=2.0.0
+
+# (Optional) If you integrate a web-search or HTTP tool
+requests>=2.30.0
